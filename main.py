@@ -43,7 +43,7 @@ def main(file, n=None, first=False):
     fname = n
   os.system("ld -m elf_i386 -dynamic-linker /lib/ld-linux.so.2 -o " + fname + " semble.o -lc")
   if not debug:
-    os.system("rm semble.o parseout.txt lexout.txt newcode.smb")
+    os.system("rm semble.o parseout.txt lexout.txt newcode.smb console.txt")
   
 
 if __name__ == '__main__':
