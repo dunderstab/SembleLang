@@ -1,0 +1,78 @@
+//      Standard Math library for SembleLang v1.0.0 to ?
+//      -------------------------------
+//        Dependencies are as follows
+//
+//          - SembleLang v1+
+//          - Access to libc (default compilation)
+//          - Semble "base.smb"
+//          - Semble "vector.smb"
+//       
+//        This library is under the same license as SembleLang itself, as it comes with the language.
+//        This liscense being the MIT license:    
+//        
+// MIT License
+//
+// Copyright (c) 2021 dunderstab
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
+//        
+//        That is all, here is the code.
+//
+//          - dunder @ SembleLang Team
+
+// Imports
+
+#include vector.smb
+#include base.smb
+
+// Functions
+
+fn initRand(seed) => {
+    srand(time(NULL));
+}
+
+fn Rand() => {
+    return rand();
+}
+
+fn randRange(f, t) => {
+    let x = t - f;
+    let y = x + 1;
+    let z = rand() % y;
+    let a = z + f;
+    return a;
+}
+
+fn randomChoice(v) => {
+    v as struct Vector;
+    let x = v.value;
+    printIntegerVector(v);
+    let y = randRange(0, v.length);
+    let z = x[y];
+    return z;
+}
+
+fn pow(base, exp) => {
+    let x = exp;
+    for i from 0 to exp {
+        let v = i + 1;
+        x = x * i;
+    } 
+    return x;
+}

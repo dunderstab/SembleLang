@@ -1,0 +1,29 @@
+#program fizzbuzz
+
+fn fizzbuzz(n) => {
+    if n = 0;
+        return 0;
+    endif;
+    if n % 3 = 0;
+        if n % 5 = 0;
+            let x = printf("FizzBuzz\n");
+            x = fizzbuzz(n - 1);
+            return 0;
+        endif;
+        x = printf("Fizz\n");
+        x = fizzbuzz(n - 1);
+        return 0;
+    endif;
+    if n % 5 = 0;
+        x = printf("Buzz\n");
+        x = fizzbuzz(n - 1);
+        return 0;
+    endif;
+    x = printf("%d\n", n);
+    x = fizzbuzz(n - 1);
+    return 0;
+}
+
+fn main() => {
+    let x = fizzbuzz(100);
+}

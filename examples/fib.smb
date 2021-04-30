@@ -1,0 +1,15 @@
+#program fib
+
+fn fib(n) => {
+  if n < 2;
+    return n;
+  endif;
+  return fib(n - 2) + fib(n - 1);
+}
+
+fn main() => {
+
+  printf("The answer is: %d\n", fib(45)); 
+
+  return 0;
+}

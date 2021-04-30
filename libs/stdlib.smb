@@ -1,0 +1,131 @@
+fn printl(s) => {
+  let x = print(s);
+  let y = print("\n");
+  return x + y;
+}
+
+fn print(s) => {
+  printf(s);
+  return 0;
+}
+
+fn strInput(buf) => {
+  let v = @buf;
+  scanf(" %[^\n]", $v);
+  return 0;
+}
+
+fn intInput() => {
+  let x = 0;
+  scanf("%d", @x);
+  return x;
+}
+
+fn charInput() => {
+  let x = ' ';
+  scanf(" %c", @x);
+  return x;
+}
+
+fn pow(base, exp) => {
+  if exp = 0;
+    return 0;
+  endif;
+  let result = base;
+  while exp > 1;
+    result = result * base;
+    exp = exp - 1;
+  endwhile;
+  return result;
+}
+
+fn input(prompt, buffer) => {
+  let x = buffer;
+  printl(prompt);
+  strInput(x);
+  return 0;
+}
+
+fn int_to_string(n, buffer) => {
+  let x = sprintf(buffer, "%d", n);
+  return x;
+}
+
+fn string_to_int(string) => {
+  let a = 0;
+  let x = sscanf(string, "%d", @a);
+  return a;
+}
+
+fn fprintl(fp, data) => {
+  fprintf(fp, data);
+  fprintf(fp, "\n");
+}
+
+fn writef(filename, data) => {
+  let fp = fopen(filename, "w");
+  fprintf(fp, data);
+  fclose(fp);
+}
+
+fn writefl(filename, data) => {
+  let fp = fopen(filename, "w");
+  fprintl(fp, data);
+  fclose(fp);
+}
+
+fn appendf(filename, data) => {
+  let fp = fopen(filename, "a");
+  fprintf(fp, data);
+  fclose(fp);
+}
+
+fn appendfl(filename, data) => {
+  let fp = fopen(filename, "a");
+  fprintl(fp, data);
+  fclose(fp);
+}
+
+fn readf(filename, buffer, bytes) => {
+  let fp = fopen(filename, "r");
+  fgets(buffer, bytes, fp);
+  fclose(fp);
+}
+
+fn fgetchar(filename) => {
+  let fp = fopen(filename, "r");
+  let c = fgetc(fp);
+  fclose(fp);
+  return c;
+}
+
+fn freadline(filename, buffer) => {
+  let fp = fopen(filename, "r");
+  let c = ' ';
+  for i from 0 to 1000;
+    c = fgetc(fp);
+    if c = 0x0a;
+      break;
+    endif;
+    strncat(buffer, @c, 1);
+  endfor;
+  fclose(fp);
+  return i;
+}
+
+fn fdelete(fname) => {
+  let x = i8:100;
+  x = "rm ";
+  let v = i8:100;
+  v = fname;
+  strcat(x, v);
+  let y = system(x);
+  return y;
+}
+
+fn fcreate(fname) => {
+  let fp = fopen(fname, "w");
+  fprintf("");
+  fclose(fp);
+  return 0;
+}

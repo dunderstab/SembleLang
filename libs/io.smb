@@ -1,0 +1,124 @@
+//      Standard IO library for SembleLang v1.0.0 to ?
+//      -------------------------------
+//        Dependencies are as follows
+//
+//          - SembleLang v1+
+//          - Access to libc (default compilation)
+//          - Semble "base.smb"
+//          - Semble "strings.smb"
+//          - Semble "files.smb"
+//       
+//        This library is under the same license as SembleLang itself, as it comes with the language.
+//        This liscense being the MIT license:    
+//        
+// MIT License
+//
+// Copyright (c) 2021 dunderstab
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
+//        
+//        That is all, here is the code.
+//
+//          - dunder @ SembleLang Team
+
+// Imports
+
+#include strings.smb
+#include base.smb
+#include files.smb
+
+// Structs
+
+new struct Printer {
+    message
+}
+
+// Printer Constructor
+
+fn Printer(msg) => {
+    Printer p = msg;
+    return p;
+}
+
+// Functions
+
+
+// print(str s)
+fn print(s) => {
+    puts(s);
+}
+
+// sprintl(String s)
+fn sprintl(s) => {
+    s as struct String;
+    puts(s.value);
+}
+
+// sprint(String s)
+fn sprint(s) => {
+    s as struct String;
+    printf("%s", s.value);
+}
+
+// printnl(str s)
+fn printnl(s) => {
+    printf("%s", s);
+}
+
+// printPrinter(Printer p)
+fn printPrinter(p) => {
+    p as struct Printer;
+    print(p.message);
+}
+
+// prints(Vector<str>)
+fn prints(strs) => {
+
+}
+
+// sprints(Vector<String>)
+fn sprints(strs) => {
+
+}
+
+fn printInteger(i) => {
+    printf("%i\n", i);
+}
+
+// input(str prompt)
+fn input(prompt) => {
+    print(prompt);
+    let c = 0;
+    let s = Space(10);
+    let x = s.space;
+    let i = 0;
+    let currentSize = 11;
+    while c ! EOF;
+        c = getchar();
+        if c = NEWLINE_CHAR;
+            break;
+        endif;
+        x[_i] = c;
+        s = resizeSpace(s, currentSize);
+        x = s.space;
+        currentSize = currentSize + 1;
+        i = i + 1;
+    endwhile;
+    return s.space;
+}

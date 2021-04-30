@@ -1,0 +1,24 @@
+#program main
+#include stdlib.smb
+
+new struct Person {
+  name,
+  age
+}
+
+fn printPersonAge(person) => {
+  person as struct Person;
+  printf("%d\n", person.age);
+}
+
+fn printPersonName(person) => {
+  person as struct Person;
+  printl(person.name);
+} 
+
+fn main() => {
+  def new Person person1 "Jerry", 67;
+  printPersonAge(person1);
+
+  return person1.age;
+}

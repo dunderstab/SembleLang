@@ -1,0 +1,35 @@
+#program calc
+
+fn main() => {
+  let x = 0;
+  let op = ' ';
+  let y = 0;
+  printf("Enter a number >>>\n");
+  scanf("%d", @x);
+  printf("Enter an operator >>> \n");
+  scanf(" %c", @op);
+  printf("Enter another number >>>\n");
+  scanf("%d", @y);
+  if op = '+';
+    printf("%d + %d = %d\n", x, y, x + y);
+    quit 0;
+  endif;
+  if op = '-';
+    printf("%d - %d = %d\n", x, y, x - y);
+    quit 0;
+  endif;
+  if op = '*';
+    printf("%d * %d = %d\n", x, y, x * y);
+    quit 0;
+  endif;
+  if op = '/';
+    printf("%d / %d = %d\n", x, y, x / y);
+    quit 0;
+  endif;
+  if op = '%';
+    printf("%d % %d = %d\n", x, y, x % y);
+    quit 0;
+  endif;
+  printf("Invalid operator!\n")
+  return 1;
+}

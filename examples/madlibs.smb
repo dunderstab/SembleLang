@@ -1,0 +1,11 @@
+#program madlibs
+#include stdlib.smb
+
+fn main() => {
+  let a = i8:100;
+  let b = i8:100;
+  input("Enter your name.", a);
+  input("Enter your age.", b);
+  printf("There was a man named %s and he was %s years old!\n", a, b);
+  return 0;
+}

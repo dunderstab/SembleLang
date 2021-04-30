@@ -1,0 +1,135 @@
+//      Standard Files library for SembleLang v1.0.0 to ?
+//      -------------------------------
+//        Dependencies are as follows
+//
+//          - SembleLang v1+
+//          - Access to libc (default compilation)
+//          - Semble "base.smb"
+//          - Semble "io.smb"
+//       
+//        This library is under the same license as SembleLang itself, as it comes with the language.
+//        This liscense being the MIT license:    
+//        
+// MIT License
+//
+// Copyright (c) 2021 dunderstab
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
+//        
+//        That is all, here is the code.
+//
+//          - dunder @ SembleLang Team
+
+#include base.smb
+#include io.smb
+
+// Data Structures
+
+~
+File Data Structure,
+
+    - filename - name of file that the object represents
+    - file_pointer - pointer to the file descriptor
+    - openas - the mode in which the file is open
+~
+
+new struct File {
+  filename,
+  file_pointer,
+  openas
+}
+
+new struct FileRelationship {
+  file1,
+  file2
+}
+
+// Text Attributes
+
+const EOF = -1;
+const NEWLINE_CHAR = 0x0a;
+const TAB_CHAR = 0x09;
+
+// File Descriptors
+
+const FD_STDIN = 0;
+const FD_STDOUT = 1;
+const FD_STDERR = 2;
+
+// Syscalls
+
+const CALL_SYS_FORK = 2;
+const CALL_SYS_READ = 3;
+const CALL_SYS_WRITE = 4;
+const CALL_SYS_OPEN = 5;
+const CALL_SYS_CLOSE = 6;
+const CALL_SYS_CREATE = 8;
+const CALL_SYS_LSEEK = 19;
+
+// Functions
+
+fn generateFileWrite(filename) => {
+  let fp = fopen(filename, "w+");
+  File file = filename, fp;
+  return file;
+}
+
+fn generateFileReadOnly(filename) => {
+  let fp = fopen(filename, "r");
+  File file = filename, fp;
+  return file;
+}
+
+fn generateFileAppend(filename) => {
+  let fp = fopen(filename, "a+");
+  File file = filename, fp;
+  return file;
+}
+
+fn writeToFile(file, data) => {
+  file as struct File;
+  let fp = file.file_pointer;
+  fprintf(fp, "%s", data);
+  return 0;
+}
+
+fn closeFile(file) => {
+  file as struct File;
+  fclose(file.file_pointer);
+  return 0;
+}
+
+fn readFile(file, bytes, buffer) => {
+  file as struct File;
+  bytes as struct Size;
+  fgets(buffer, bytes.size, file.file_pointer);
+  return 0;
+}
+
+~fn readFileLine(file, buffer) => {
+  file as struct File;
+  let c = ' ';
+  for i from 0 to 1000;
+    c = fgetc(file.file_pointer);
+    if c = NEWLINE_CHAR;
+      break;
+    endif;
+    strncat(buffer, @c, 1);
+  endfor;
+}~

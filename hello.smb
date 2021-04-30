@@ -1,0 +1,17 @@
+#program main
+
+fn main() => {
+    const x = 5;
+    if x >= 3 { 
+      printf("Hello, World!\n");
+      if x + 9 == 9 + 5 {
+        let z = 0;
+        if z > 100 {
+          printf("z = %d\n", z);
+        }
+        printf("Hello, World!\n");
+      }
+    }
+    return 9;
+}
+
