@@ -322,7 +322,8 @@ def lex(s):
       tmp2 = ""
       
     elif i == "-" and tmpid != "quote" and tmpid != "chr" and tmpid != "paren" and tmpid != "brac":
-      tmpid = "minus"
+      tokens.append(Token(TT_MINUS))
+      tmpid = ""
       tmp2 = ""
 
     elif i == "*" and tmpid != "quote" and tmpid != "chr" and tmpid != "paren" and tmpid != "brac":
