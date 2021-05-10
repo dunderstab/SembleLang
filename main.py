@@ -58,3 +58,4 @@ if __name__ == '__main__':
   #print("\n")
   #print(src.parse.organizeEquation(src.lex.lex("5 + 5 * 5 + 5 + 5\n")))
   main(sys.argv[1])
+  print("Compiled Succesfully")
